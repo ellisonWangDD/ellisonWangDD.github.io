@@ -269,9 +269,6 @@ a#可以看到虽然对b操作，但是原始a的值也发生了变化
 ## torch.where(condition, x, y) → Tensor
 逐个位置元素判断，返回一个tensor可能来自源数据x或者y。
 
-    $$outi={xiif conditioniyiotherwiseout_i = \begin{cases} x_i & \text{if } \text{condition}_i \\ y_i & \text{otherwise} \\ \end{cases} outi​={xi​yi​​if conditioni​otherwise​$$
-
-
     **注意：**
     条件,x,y都必须是可广播的
     **参数:**	
@@ -325,17 +322,17 @@ torch.where(x > 0 , x, y)
 a = torch.tensor([1,2,3,4])
 a.long().type()
 ```
-    'torch.LongTensor'
+### torch.LongTensor
 
 ```python
 a.float().type()
 ```
-    'torch.FloatTensor'
+### torch.FloatTensor
 ```python
 a.byte().type()
 ```
-    'torch.ByteTensor'
-## `Tensor.cuda(device, non_blocking=False)`
+### torch.ByteTensor
+## Tensor.cuda(device, non_blocking=False)
 Returns a copy of this object in CUDA memory.
 返回一个CUDA内存数据的副本,将输入数据存入cuda
 
@@ -363,10 +360,8 @@ print('a_grad:', a.grad)#但是梯度传播没有因此中断
 ## Tensor.copy_(src, non_blocking=False)
 只拷贝`src`的数据到`self`tensor，并返回`self`，`src`和`self`可以有不同的数据类型和不同的设备上.<br>
 **参数：**
-
     src (Tensor) – 源数据
     non_blocking (bool) – 如果是True，copy操作跨CPU和GPU，但可能会出现异步问题
-
 
 ```python
 a = torch.tensor([1,2,3,4,5], dtype=torch.float32, requires_grad=True)
@@ -381,18 +376,15 @@ print('c_grad:', c.grad)
     a_grad: tensor([ 0.4000,  0.8000,  1.2000,  1.6000,  2.0000])
     c_grad: None
 
-```
 ## Tensor.contiguous()
 将tensor改为连续存储模式
 
-## Tensor.fill_()内容填充
-`Tensor.fill_(value)`tensor内部全部填充value元素
+### Tensor.fill_()内容填充
+tensor内部全部填充value元素
 
-`Tensor.zero_()`
+### Tensor.zero_()
 
-`Tensor.normal_(mean, std, out=None)`
-
-
+### Tensor.normal_(mean, std, out=None)
 
 ```python
 a = torch.randn(3,3)
@@ -442,18 +434,19 @@ torch.ones(3,3)
     tensor([[ 1.,  1.,  1.],
             [ 1.,  1.,  1.],
             [ 1.,  1.,  1.]])
-
 ```python
 torch.eye(3,3)
 ```
     tensor([[ 1.,  0.,  0.],
             [ 0.,  1.,  0.],
             [ 0.,  0.,  1.]])
+
 ```python
-torch.arange(start=0, end=10, step=2)#区间是左壁右开，不包含end
+torch.arange(0, 10, 2)#区间是左壁右开，不包含end
 ```
     tensor([ 0.,  2.,  4.,  6.,  8.])
-### `torch/Tensor.round(input, out=None)` → Tensor
+    
+### torch/Tensor.round(input, out=None) → Tensor
 对tensor内所有元素取整
 
 ```python
@@ -461,20 +454,18 @@ a = torch.randint(0,10,(2,2))
 a.round()
 ```
     tensor([[ 7.,  5.],
-            [ 1.,  5.]])
-
-```
-
-## `torch.random`torch自带随机模块
+            [ 1.,  5.]])     
+## torch.randomtorch自带随机模块
 生成随机数的功能模块
-### `torch.random.manual_seed(seed)`
+### torch.random.manual_seed(seed)
 设置随机数种子
-### `torch.randint(low, high, size)`
+### torch.randint(low, high, size)
 返回一个服从uniform分布的int随机矩阵
-### `torch.randn(*sizes, out=None, dtype=None, layout=torch.strided, device=None, requires_grad=False)`
+### torch.randn(*sizes, out=None, dtype=None, layout=torch.strided, device=None, requires_grad=False)
 $\text{out}_{i} \sim \mathcal{N}(0, 1)$
 生成一个服从(0,1)标准正态分布的矩阵,传入size使用参数收集机制。
-### `torch.randperm(n, out=None, dtype=torch.int64, layout=torch.strided, device=None, requires_grad=False) → LongTensor`
+### torch.randperm(n, out=None, dtype=torch.int64, layout=torch.strided, device=None, requires_grad=False) → LongTensor
+
 生成一个`0→n-1`随机序列
 **参数：**	
 
